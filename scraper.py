@@ -67,7 +67,7 @@ class Scraper:
 
     # count number of tweets on page load
     last_num_tweets = len(ol_element.find_elements_by_xpath("*"))
-    self.log.info("initial number of tweets: ",last_num_tweets)
+    self.log.info("initial number of tweets: {}".format(last_num_tweets))
 
     while True:
       self.log.debug("scrolling")
@@ -79,7 +79,7 @@ class Scraper:
       # find ol(ordered list) tag container
       element = self.driver.find_element_by_xpath("//*[@id='stream-items-id']")
       num_tweets = len(element.find_elements_by_xpath("*")) 
-      self.log.info("number of tweets during this cycle: ",num_tweets)
+      self.log.info("number of tweets during this cycle: {}".format(num_tweets))
 
       if num_tweets == last_num_tweets:
         self.log.info("last cycles tweets number equal to curreny cycle; breaking")
