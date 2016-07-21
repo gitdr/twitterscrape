@@ -11,5 +11,6 @@ logging.basicConfig(
 
 log = logging.getLogger('twitterscrape')
 
-Scraper().test_log("ksdjfksajfskjd")
-Parser().test_log("ksdjfksajfskjd")
+Scraper().scrape(Parser(),'drisics','Ngi2veth!')
+#.test_log("ksdjfksajfskjd")
+# .test_log("ksdjfksajfskjd")
