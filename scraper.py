@@ -88,7 +88,11 @@ class Scraper:
         last_num_tweets = num_tweets
         self.log.info("continuing to fetch tweets")
 
-    #parser.test_log("ksdjfksajfskjd")
+    # # find ol(ordered list) tag container
+    # ol_element = self.driver.find_element_by_xpath("//*[@id='stream-items-id']")
+    # li_elements = ol_element.find_elements_by_xpath("*")
+
+    parser.parse(self.driver.page_source)
 
     self.driver.close()
 
