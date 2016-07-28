@@ -1,3 +1,6 @@
+
+import os
+import datetime
 import logging
 import sys
 from scraper import Scraper
@@ -11,6 +14,12 @@ logging.basicConfig(
 
 log = logging.getLogger('twitterscrape')
 
-Scraper().scrape(Parser(),'drisics','Ngi2veth!')
-#.test_log("ksdjfksajfskjd")
-# .test_log("ksdjfksajfskjd")
+start_date = datetime.date(2016, 7, 26)
+end_date = datetime.datetime.today().date()
+
+hashtags = ['23andme', 'precisionmedicine', 'personalizedmedicine', 'GenomicsEngland', 'genomic', 'datasharing']
+
+username = os.environ['USERNAME']
+password = os.environ['PASSWORD']
+
+Scraper().scrape(username,password, hashtags, start_date, end_date)
