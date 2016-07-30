@@ -10,4 +10,5 @@ while [ $err_code -ne 0 ]; do
   killall firefox
   delay=$(( ( RANDOM % 100 )  + 1 ))
   echo "sleeping for $delay seconds"
+  sleep $delay 
 done
