@@ -106,7 +106,7 @@ class Scraper:
     time.sleep(5)
 
   def generate_search_string(self, hashtag, date):
-    return "#%s since:%s until:%s" % (hashtag, date.strftime("%Y-%m-%d"), (date + datetime.timedelta(days=1)).strftime("%Y-%m-%d"))
+    return "%s since:%s until:%s" % (hashtag, date.strftime("%Y-%m-%d"), (date + datetime.timedelta(days=1)).strftime("%Y-%m-%d"))
 
   def create_combos(self, hashtags, dates):
     result = []

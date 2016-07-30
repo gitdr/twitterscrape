@@ -17,7 +17,7 @@ log = logging.getLogger('twitterscrape')
 start_date = datetime.date(2016, 7, 26)
 end_date = datetime.datetime.today().date()
 
-hashtags = ['23andme', 'precisionmedicine', 'personalizedmedicine', 'GenomicsEngland', 'genomic', 'datasharing']
+hashtags = ['#23andme', '#precisionmedicine', '#personalizedmedicine', '@GenomicsEngland', '#genomic', '#datasharing']
 
 username = os.environ['USERNAME']
 password = os.environ['PASSWORD']
