@@ -18,8 +18,7 @@ class Tweet(Base):
     id = Column(Integer, primary_key=True)
     tweet_text = Column(String(250))
     timestamp = Column(DateTime())
-    # street_number = Column(String(250))
-    # post_code = Column(String(250), nullable=False)
+    picture_url = Column(String(250))
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
  

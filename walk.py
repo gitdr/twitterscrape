@@ -98,7 +98,15 @@ for folder, subs, files in os.walk("./data"):
         user = session.query(User).filter(User.id == user_id).first()
         tweet_id = int(tweet['data-tweet-id'])
         if not tweet_id in tweets_in_db:
-          new_tweet = Tweet(id=tweet_id, user=user, tweet_text=tweet['data-tweet-text'], timestamp=datetime.datetime.fromtimestamp(int(tweet['data-time-ms'])/1000))
+          pict_url = None
+          if 'picture' in tweet:
+            pict_url = tweet['picture']
+
+          new_tweet = Tweet(id=tweet_id,
+                            user=user,
+                            tweet_text=tweet['data-tweet-text'],
+                            timestamp=datetime.datetime.fromtimestamp(int(tweet['data-time-ms'])/1000),
+                            picture_url=pict_url)
           session.add(new_tweet)
           tweets_in_db.append(tweet_id)
           session.commit()
