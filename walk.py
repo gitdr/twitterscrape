@@ -3,6 +3,7 @@ from sqlalchemy.orm import sessionmaker
  
 from create_schema import Base, User, Tweet
 
+import datetime
 import os
 import sys
 from bs4 import BeautifulSoup
@@ -89,7 +90,7 @@ for folder, subs, files in os.walk("./data"):
       user_id = int(tweet['data-user-id'])
       if not user_id in users:
         # Insert a Person in the person table
-        new_user = User(id=tweet['data-user-id'], name=tweet['data-name'])
+        new_user = User(id=tweet['data-user-id'], name=tweet['data-name'], screen_name=tweet['data-screen-name'])
         session.add(new_user)
         users.append(user_id)
         session.commit()
@@ -97,7 +98,7 @@ for folder, subs, files in os.walk("./data"):
         user = session.query(User).filter(User.id == user_id).first()
         tweet_id = int(tweet['data-tweet-id'])
         if not tweet_id in tweets_in_db:
-          new_tweet = Tweet(id=tweet_id, user=user, tweet_text=tweet['data-tweet-text'])
+          new_tweet = Tweet(id=tweet_id, user=user, tweet_text=tweet['data-tweet-text'], timestamp=datetime.datetime.fromtimestamp(int(tweet['data-time-ms'])/1000))
           session.add(new_tweet)
           tweets_in_db.append(tweet_id)
           session.commit()

@@ -1,6 +1,6 @@
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -11,11 +11,13 @@ class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
+    screen_name = Column(String(250), nullable=False)
  
 class Tweet(Base):
     __tablename__ = 'tweet'
     id = Column(Integer, primary_key=True)
     tweet_text = Column(String(250))
+    timestamp = Column(DateTime())
     # street_number = Column(String(250))
     # post_code = Column(String(250), nullable=False)
     user_id = Column(Integer, ForeignKey('user.id'))
